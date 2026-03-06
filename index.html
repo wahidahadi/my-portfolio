@@ -5,35 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Professional PHP Developer Portfolio</title>
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
 <style>
-body {
-    font-family: 'Roboto', sans-serif;
-    scroll-behavior: smooth;
+/* ---------- Reset & Base ---------- */
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'Roboto', sans-serif;
     background:#f8f9fa;
+    scroll-behavior: smooth;
     color:#333;
 }
 
-/* Navbar */
+/* ---------- Navbar ---------- */
 .navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
     background:#0d6efd;
+    padding:15px 20px;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
-.navbar a{
-    color:white !important;
+.navbar .logo{
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+    text-decoration:none;
+}
+.navbar ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+.navbar ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+.navbar ul li a:hover{
+    color:#ffeb3b;
 }
 
-/* Hero Section */
+/* ---------- Hero Section ---------- */
 .hero{
+    height:100vh;
     background:#0d6efd;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     color:white;
     text-align:center;
-    padding:120px 20px;
+    padding:0 20px;
 }
 .hero h1{
     font-size:50px;
@@ -42,27 +78,93 @@ body {
 }
 .hero p{
     font-size:22px;
-    margin-top:10px;
+    margin-top:15px;
     animation:fadeInUp 1s ease-in-out;
 }
 
-/* Sections */
+/* ---------- Sections ---------- */
 .section{
-    padding:80px 0;
+    padding:80px 20px;
 }
 
-/* Cards */
-.card{
-    border:none;
+/* ---------- About ---------- */
+#about p{
+    max-width:800px;
+    margin:0 auto;
+    font-size:18px;
+    line-height:1.8;
+    text-align:center;
+}
+
+/* ---------- Skills ---------- */
+#skills .skills-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+}
+.skill{
+    text-align:center;
+}
+.skill i{
+    font-size:40px;
+    color:#0d6efd;
+    margin-bottom:10px;
+    transition:0.3s;
+}
+.skill:hover i{
+    transform:scale(1.2);
+}
+
+/* ---------- Projects ---------- */
+#projects .projects-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    justify-content:center;
+}
+.project-card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:300px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition:0.3s;
 }
-.card:hover{
-    transform: translateY(-10px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+.project-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Footer */
+/* ---------- Contact ---------- */
+#contact form{
+    max-width:600px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+#contact input, #contact textarea{
+    padding:12px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+#contact button{
+    padding:12px;
+    border:none;
+    background:#0d6efd;
+    color:white;
+    font-size:18px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+#contact button:hover{
+    background:#094aac;
+}
+
+/* ---------- Footer ---------- */
 .footer{
     background:#111;
     color:white;
@@ -70,7 +172,7 @@ body {
     padding:25px 0;
 }
 
-/* Animations */
+/* ---------- Animations ---------- */
 @keyframes fadeInDown{
     0%{opacity:0; transform:translateY(-50px);}
     100%{opacity:1; transform:translateY(0);}
@@ -80,110 +182,135 @@ body {
     100%{opacity:1; transform:translateY(0);}
 }
 
-/* Contact form */
-#contact-form input, #contact-form textarea{
-    margin-bottom:15px;
-    border-radius:5px;
+/* ---------- Responsive ---------- */
+@media(max-width:768px){
+    .navbar ul{
+        flex-direction:column;
+        background:#0d6efd;
+        position:absolute;
+        top:60px;
+        right:-100%;
+        width:100%;
+        transition:0.3s;
+    }
+    .navbar ul.show{
+        right:0;
+    }
+    .navbar .menu-toggle{
+        display:block;
+        font-size:25px;
+        color:white;
+        cursor:pointer;
+    }
 }
-#contact-form button{
-    border-radius:5px;
+.menu-toggle{
+    display:none;
 }
+
 </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">PHP Portfolio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"><i class="fa fa-bars" style="color:white;"></i></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
+<nav class="navbar">
+    <a href="#" class="logo">PHP Portfolio</a>
+    <span class="menu-toggle"><i class="fa fa-bars"></i></span>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 </nav>
 
 <!-- Hero Section -->
-<div class="hero">
+<section class="hero">
     <h1>Professional PHP Developer</h1>
     <p>Web Applications | Admin Dashboards | Database Systems</p>
-</div>
+</section>
 
 <!-- About Section -->
-<div class="section container" id="about">
-<h2 class="text-center mb-5">About Me</h2>
-<p class="text-center">
-I am a professional PHP developer with extensive experience in building modern web applications, responsive dashboards, and database-driven websites using PHP, MySQL, JavaScript, and Bootstrap. I focus on clean code, secure architecture, and fast performance.
-</p>
-</div>
+<section class="section" id="about">
+<h2 class="text-center mb-4">About Me</h2>
+<p>I am a professional PHP developer with extensive experience in building modern web applications, responsive dashboards, and database-driven websites using PHP, MySQL, JavaScript, and Bootstrap. I focus on clean code, secure architecture, and fast performance.</p>
+</section>
 
 <!-- Skills Section -->
-<div class="section bg-light" id="skills">
-<div class="container">
+<section class="section bg-light" id="skills">
 <h2 class="text-center mb-5">Skills</h2>
-<div class="row text-center g-4">
-    <div class="col-md-3"><i class="fa-brands fa-php fa-2x"></i><h5>PHP</h5></div>
-    <div class="col-md-3"><i class="fa-solid fa-database fa-2x"></i><h5>MySQL</h5></div>
-    <div class="col-md-3"><i class="fa-brands fa-js fa-2x"></i><h5>JavaScript</h5></div>
-    <div class="col-md-3"><i class="fa-brands fa-bootstrap fa-2x"></i><h5>Bootstrap</h5></div>
+<div class="skills-container">
+    <div class="skill"><i class="fa-brands fa-php"></i><h5>PHP</h5></div>
+    <div class="skill"><i class="fa-solid fa-database"></i><h5>MySQL</h5></div>
+    <div class="skill"><i class="fa-brands fa-js"></i><h5>JavaScript</h5></div>
+    <div class="skill"><i class="fa-brands fa-bootstrap"></i><h5>Bootstrap</h5></div>
 </div>
-</div>
-</div>
+</section>
 
 <!-- Projects Section -->
-<div class="section container" id="projects">
+<section class="section" id="projects">
 <h2 class="text-center mb-5">Projects</h2>
-<div class="row g-4">
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>Sales Management System</h5>
-            <p>PHP & MySQL dashboard for managing sales, inventory, and reports.</p>
-        </div>
+<div class="projects-container">
+    <div class="project-card">
+        <h5>Sales Management System</h5>
+        <p>PHP & MySQL dashboard for managing sales, inventory, and reports.</p>
     </div>
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>E-commerce Website</h5>
-            <p>Full-featured online store with shopping cart and secure payment system.</p>
-        </div>
+    <div class="project-card">
+        <h5>E-commerce Website</h5>
+        <p>Full-featured online store with shopping cart and secure payment system.</p>
     </div>
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>Admin Dashboard</h5>
-            <p>Responsive admin panel with charts, analytics, and reporting features.</p>
-        </div>
+    <div class="project-card">
+        <h5>Admin Dashboard</h5>
+        <p>Responsive admin panel with charts, analytics, and reporting features.</p>
     </div>
 </div>
-</div>
+</section>
 
 <!-- Contact Section -->
-<div class="section bg-light" id="contact">
-<div class="container">
+<section class="section bg-light" id="contact">
 <h2 class="text-center mb-4">Contact Me</h2>
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <form id="contact-form" action="send_email.php" method="POST">
-            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-            <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn btn-primary w-100">Send Message</button>
-        </form>
-    </div>
-</div>
-</div>
-</div>
+<form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
+<div id="status" class="text-center mt-3"></div>
+</section>
 
 <!-- Footer -->
-<div class="footer">
+<footer class="footer">
 <p>© 2026 Professional PHP Developer Portfolio</p>
-</div>
+</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Navbar toggle for mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navUl = document.querySelector('.navbar ul');
+menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('show');
+});
+
+// Smooth scroll (if anchor clicked)
+document.querySelectorAll('.navbar a').forEach(anchor=>{
+    anchor.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior:'smooth'
+        });
+        if(navUl.classList.contains('show')) navUl.classList.remove('show');
+    });
+});
+
+// Contact form (JS only)
+document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const status = document.getElementById('status');
+    status.innerHTML = "Sending message...";
+    setTimeout(()=>{
+        status.innerHTML = "Message sent successfully! (demo only)";
+        this.reset();
+    }, 1000);
+});
+</script>
 </body>
 </html>
