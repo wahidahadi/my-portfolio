@@ -13,200 +13,62 @@
 
 <style>
 /* ---------- Reset & Base ---------- */
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-body{
-    font-family:'Roboto', sans-serif;
-    background:#f8f9fa;
-    scroll-behavior: smooth;
-    color:#333;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Roboto', sans-serif; background:#f8f9fa; scroll-behavior:smooth; color:#333; }
 
 /* ---------- Navbar ---------- */
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#0d6efd;
-    padding:15px 20px;
-    z-index:1000;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.navbar .logo{
-    color:white;
-    font-weight:bold;
-    font-size:22px;
-    text-decoration:none;
-}
-.navbar ul{
-    list-style:none;
-    display:flex;
-    gap:20px;
-}
-.navbar ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:0.3s;
-}
-.navbar ul li a:hover{
-    color:#ffeb3b;
-}
+.navbar{ position:fixed; top:0; left:0; width:100%; background:#0d6efd; padding:15px 20px; z-index:1000; display:flex; justify-content:space-between; align-items:center; }
+.navbar .logo{ color:white; font-weight:bold; font-size:22px; text-decoration:none; }
+.navbar ul{ list-style:none; display:flex; gap:20px; }
+.navbar ul li a{ color:white; text-decoration:none; font-weight:500; transition:0.3s; }
+.navbar ul li a:hover{ color:#ffeb3b; }
+.navbar .menu-toggle{ display:none; font-size:25px; color:white; cursor:pointer; }
 
-/* ---------- Hero Section ---------- */
-.hero{
-    height:100vh;
-    background:#0d6efd;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    text-align:center;
-    padding:0 20px;
-}
-.hero h1{
-    font-size:50px;
-    font-weight:bold;
-    animation:fadeInDown 1s ease-in-out;
-}
-.hero p{
-    font-size:22px;
-    margin-top:15px;
-    animation:fadeInUp 1s ease-in-out;
-}
+/* ---------- Hero ---------- */
+.hero{ height:100vh; background:#0d6efd; display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; text-align:center; padding:0 20px; }
+.hero h1{ font-size:50px; font-weight:bold; animation:fadeInDown 1s ease-in-out; }
+.hero p{ font-size:22px; margin-top:15px; animation:fadeInUp 1s ease-in-out; }
 
 /* ---------- Sections ---------- */
-.section{
-    padding:80px 20px;
-}
-
-/* ---------- About ---------- */
-#about p{
-    max-width:800px;
-    margin:0 auto;
-    font-size:18px;
-    line-height:1.8;
-    text-align:center;
-}
+.section{ padding:80px 20px; }
+#about p{ max-width:800px; margin:0 auto; font-size:18px; line-height:1.8; text-align:center; }
 
 /* ---------- Skills ---------- */
-#skills .skills-container{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:40px;
-}
-.skill{
-    text-align:center;
-}
-.skill i{
-    font-size:40px;
-    color:#0d6efd;
-    margin-bottom:10px;
-    transition:0.3s;
-}
-.skill:hover i{
-    transform:scale(1.2);
-}
+#skills .skills-container{ display:flex; flex-wrap:wrap; justify-content:center; gap:40px; }
+.skill{ text-align:center; }
+.skill i{ font-size:40px; color:#0d6efd; margin-bottom:10px; transition:0.3s; }
+.skill:hover i{ transform:scale(1.2); }
+.skill-progress{ width:150px; height:150px; position:relative; margin:0 auto; }
+.skill-progress svg{ transform:rotate(-90deg); width:100%; height:100%; }
+.skill-progress circle{ fill:none; stroke:#ddd; stroke-width:10; }
+.skill-progress circle.progress{ stroke:#0d6efd; stroke-linecap:round; stroke-dasharray:440; stroke-dashoffset:440; transition:1s; }
+.skill-progress span{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:bold; }
 
 /* ---------- Projects ---------- */
-#projects .projects-container{
-    display:flex;
-    flex-wrap:wrap;
-    gap:30px;
-    justify-content:center;
-}
-.project-card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    width:300px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
-}
-.project-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
+#projects .projects-container{ display:flex; flex-wrap:wrap; gap:30px; justify-content:center; }
+.project-card{ background:white; padding:20px; border-radius:10px; width:300px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; }
+.project-card:hover{ transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+.project-card img{ width:100%; border-radius:10px; margin-bottom:10px; }
 
 /* ---------- Contact ---------- */
-#contact form{
-    max-width:600px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-#contact input, #contact textarea{
-    padding:12px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    font-size:16px;
-}
-#contact button{
-    padding:12px;
-    border:none;
-    background:#0d6efd;
-    color:white;
-    font-size:18px;
-    border-radius:5px;
-    cursor:pointer;
-    transition:0.3s;
-}
-#contact button:hover{
-    background:#094aac;
-}
+#contact form{ max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px; }
+#contact input, #contact textarea{ padding:12px; border-radius:5px; border:1px solid #ccc; font-size:16px; }
+#contact button{ padding:12px; border:none; background:#0d6efd; color:white; font-size:18px; border-radius:5px; cursor:pointer; transition:0.3s; }
+#contact button:hover{ background:#094aac; }
 
 /* ---------- Footer ---------- */
-.footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:25px 0;
-}
+.footer{ background:#111; color:white; text-align:center; padding:25px 0; }
 
 /* ---------- Animations ---------- */
-@keyframes fadeInDown{
-    0%{opacity:0; transform:translateY(-50px);}
-    100%{opacity:1; transform:translateY(0);}
-}
-@keyframes fadeInUp{
-    0%{opacity:0; transform:translateY(50px);}
-    100%{opacity:1; transform:translateY(0);}
-}
+@keyframes fadeInDown{ 0%{opacity:0; transform:translateY(-50px);} 100%{opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp{ 0%{opacity:0; transform:translateY(50px);} 100%{opacity:1; transform:translateY(0);} }
 
 /* ---------- Responsive ---------- */
 @media(max-width:768px){
-    .navbar ul{
-        flex-direction:column;
-        background:#0d6efd;
-        position:absolute;
-        top:60px;
-        right:-100%;
-        width:100%;
-        transition:0.3s;
-    }
-    .navbar ul.show{
-        right:0;
-    }
-    .navbar .menu-toggle{
-        display:block;
-        font-size:25px;
-        color:white;
-        cursor:pointer;
-    }
+    .navbar ul{ flex-direction:column; background:#0d6efd; position:absolute; top:60px; right:-100%; width:100%; transition:0.3s; }
+    .navbar ul.show{ right:0; }
+    .navbar .menu-toggle{ display:block; }
 }
-.menu-toggle{
-    display:none;
-}
-
 </style>
 </head>
 <body>
@@ -239,10 +101,36 @@ body{
 <section class="section bg-light" id="skills">
 <h2 class="text-center mb-5">Skills</h2>
 <div class="skills-container">
-    <div class="skill"><i class="fa-brands fa-php"></i><h5>PHP</h5></div>
-    <div class="skill"><i class="fa-solid fa-database"></i><h5>MySQL</h5></div>
-    <div class="skill"><i class="fa-brands fa-js"></i><h5>JavaScript</h5></div>
-    <div class="skill"><i class="fa-brands fa-bootstrap"></i><h5>Bootstrap</h5></div>
+    <div class="skill">
+        <div class="skill-progress">
+            <svg>
+                <circle cx="75" cy="75" r="70"></circle>
+                <circle class="progress" cx="75" cy="75" r="70"></circle>
+            </svg>
+            <span>PHP 90%</span>
+        </div>
+        <h5>PHP</h5>
+    </div>
+    <div class="skill">
+        <div class="skill-progress">
+            <svg>
+                <circle cx="75" cy="75" r="70"></circle>
+                <circle class="progress" cx="75" cy="75" r="70"></circle>
+            </svg>
+            <span>MySQL 85%</span>
+        </div>
+        <h5>MySQL</h5>
+    </div>
+    <div class="skill">
+        <div class="skill-progress">
+            <svg>
+                <circle cx="75" cy="75" r="70"></circle>
+                <circle class="progress" cx="75" cy="75" r="70"></circle>
+            </svg>
+            <span>JavaScript 80%</span>
+        </div>
+        <h5>JavaScript</h5>
+    </div>
 </div>
 </section>
 
@@ -251,14 +139,17 @@ body{
 <h2 class="text-center mb-5">Projects</h2>
 <div class="projects-container">
     <div class="project-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Sales+Management" alt="Sales Management">
         <h5>Sales Management System</h5>
         <p>PHP & MySQL dashboard for managing sales, inventory, and reports.</p>
     </div>
     <div class="project-card">
+        <img src="https://via.placeholder.com/300x180.png?text=E-commerce" alt="E-commerce">
         <h5>E-commerce Website</h5>
         <p>Full-featured online store with shopping cart and secure payment system.</p>
     </div>
     <div class="project-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Admin+Dashboard" alt="Admin Dashboard">
         <h5>Admin Dashboard</h5>
         <p>Responsive admin panel with charts, analytics, and reporting features.</p>
     </div>
@@ -268,7 +159,7 @@ body{
 <!-- Contact Section -->
 <section class="section bg-light" id="contact">
 <h2 class="text-center mb-4">Contact Me</h2>
-<form id="contact-form">
+<form id="contact-form" action="send_email.php" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -290,7 +181,7 @@ menuToggle.addEventListener('click', () => {
     navUl.classList.toggle('show');
 });
 
-// Smooth scroll (if anchor clicked)
+// Smooth scroll
 document.querySelectorAll('.navbar a').forEach(anchor=>{
     anchor.addEventListener('click', function(e){
         e.preventDefault();
@@ -301,16 +192,17 @@ document.querySelectorAll('.navbar a').forEach(anchor=>{
     });
 });
 
-// Contact form (JS only)
-document.getElementById('contact-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    const status = document.getElementById('status');
-    status.innerHTML = "Sending message...";
-    setTimeout(()=>{
-        status.innerHTML = "Message sent successfully! (demo only)";
-        this.reset();
-    }, 1000);
+// Skill progress animation
+window.addEventListener('scroll', () => {
+    const skills = document.querySelectorAll('.skill .progress');
+    skills.forEach(skill => {
+        const rect = skill.getBoundingClientRect();
+        if(rect.top < window.innerHeight){
+            skill.style.strokeDashoffset = 'calc(440 - (440 * '+skill.parentElement.querySelector('span').innerText.replace(/\D/g,'')+'/100))';
+        }
+    });
 });
 </script>
+
 </body>
 </html>
