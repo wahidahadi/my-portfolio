@@ -1,6 +1,6 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $to = "your@email.com"; // ایمیل خودتان
+    $to = "wahidahadi31@gmail.com"; // ایمیل خودتان
     $subject = "New Contact from Portfolio";
     $message = "Name: ".$_POST['name']."\nEmail: ".$_POST['email']."\nMessage: ".$_POST['message'];
     $headers = "From: ".$_POST['email'];
