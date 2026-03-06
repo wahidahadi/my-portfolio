@@ -20,7 +20,15 @@
 <!-- Typed.js -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
+<!-- ScrollReveal -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
 <style>
+/* ---------- Preloader ---------- */
+#preloader{ position:fixed; top:0; left:0; width:100%; height:100%; background:#0d6efd; display:flex; justify-content:center; align-items:center; z-index:2000; }
+#preloader .spinner{ width:80px; height:80px; border:8px solid #fff; border-top:8px solid #ffeb3b; border-radius:50%; animation:spin 1s linear infinite; }
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
 /* ---------- Reset & Base ---------- */
 * { margin:0; padding:0; box-sizing:border-box; }
 body{ font-family:'Roboto', sans-serif; scroll-behavior:smooth; background:#f8f9fa; color:#333; }
@@ -34,12 +42,12 @@ body{ font-family:'Roboto', sans-serif; scroll-behavior:smooth; background:#f8f9
 .navbar .menu-toggle{ display:none; font-size:25px; color:white; cursor:pointer; }
 
 /* ---------- Hero Section ---------- */
-.hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background: linear-gradient(-45deg, #0d6efd, #6610f2, #6f42c1, #0dcaf0); background-size:400% 400%; animation:gradientBG 15s ease infinite; color:white; }
+.hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background: linear-gradient(-45deg, #0d6efd, #6610f2, #6f42c1, #0dcaf0); background-size:400% 400%; animation:gradientBG 15s ease infinite; color:white; opacity:0; transform:translateY(50px); transition:1s; }
 .hero h1{ font-size:50px; font-weight:bold; }
 .hero p{ font-size:22px; margin-top:15px; }
 
 /* ---------- Sections ---------- */
-.section{ padding:80px 20px; }
+.section{ padding:80px 20px; opacity:0; transform:translateY(50px); transition:1s; }
 #about p{ max-width:800px; margin:0 auto; font-size:18px; line-height:1.8; text-align:center; }
 .text-center{ text-align:center; }
 
@@ -56,17 +64,17 @@ body{ font-family:'Roboto', sans-serif; scroll-behavior:smooth; background:#f8f9
 
 /* ---------- Projects ---------- */
 #projects .projects-container{ display:flex; flex-wrap:wrap; gap:30px; justify-content:center; }
-.project-card{ background:white; padding:20px; border-radius:10px; width:300px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; text-align:center; }
+.project-card{ background:white; padding:20px; border-radius:10px; width:300px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; text-align:center; opacity:0; transform:translateY(50px); }
 .project-card:hover{ transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
 .project-card img{ width:100%; border-radius:10px; margin-bottom:10px; }
 
 /* ---------- Testimonials ---------- */
-#testimonials .swiper{ max-width:600px; margin:0 auto; }
+#testimonials .swiper{ max-width:600px; margin:0 auto; opacity:0; transform:translateY(50px); }
 #testimonials .swiper-slide{ background:white; padding:30px; border-radius:10px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
 #testimonials .swiper-slide p{ font-style:italic; margin-bottom:10px; }
 
 /* ---------- Contact ---------- */
-#contact form{ max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px; }
+#contact form{ max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px; opacity:0; transform:translateY(50px); }
 #contact input, #contact textarea{ padding:12px; border-radius:5px; border:1px solid #ccc; font-size:16px; }
 #contact button{ padding:12px; border:none; background:#0d6efd; color:white; font-size:18px; border-radius:5px; cursor:pointer; transition:0.3s; }
 #contact button:hover{ background:#094aac; }
@@ -88,6 +96,9 @@ body{ font-family:'Roboto', sans-serif; scroll-behavior:smooth; background:#f8f9
 </style>
 </head>
 <body>
+
+<!-- Preloader -->
+<div id="preloader"><div class="spinner"></div></div>
 
 <!-- Navbar -->
 <nav class="navbar">
@@ -224,6 +235,9 @@ body{ font-family:'Roboto', sans-serif; scroll-behavior:smooth; background:#f8f9
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
 <script>
+// Preloader
+window.addEventListener('load', ()=>{ document.getElementById('preloader').style.display='none'; });
+
 // Typed.js Hero Text
 var typed = new Typed('#typed', { strings: ["PHP Developer","Full-Stack Developer","Web Application Expert"], typeSpeed:60, backSpeed:40, loop:true });
 
@@ -261,6 +275,12 @@ var swiper = new Swiper('.swiper', {
     autoplay: { delay:4000 },
     pagination: { el:'.swiper-pagination', clickable:true },
 });
+
+// ScrollReveal animations
+ScrollReveal().reveal('.hero',{ duration:1000, origin:'bottom', distance:'50px', opacity:0.2, delay:200 });
+ScrollReveal().reveal('.section',{ duration:1000, origin:'bottom', distance:'50px', opacity:0.2, interval:200 });
+ScrollReveal().reveal('.project-card',{ duration:1000, origin:'bottom', distance:'50px', opacity:0.2, interval:200 });
+ScrollReveal().reveal('#contact form',{ duration:1000, origin:'bottom', distance:'50px', opacity:0.2 });
 </script>
 
 </body>
